@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="40" tileheight="40">
+ <tileset firstgid="1" name="Test" tilewidth="40" tileheight="40">
+  <image source="Tileset.png" width="160" height="80"/>
+  <tile id="1">
+   <properties>
+    <property name="block" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="kill" value="1"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="player" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Ents" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4C6gGWgHTAKhi0AAA4gAAU=
+  </data>
+ </layer>
+ <layer name="BG" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJzjYGBg4BjFo3gUj+IhgAERuglh
+  </data>
+ </layer>
+ <layer name="Main" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYKIDZiSAqWkWKWYSaxYxZpJqFj4zyTULl5nkmMEMxSPFPFrFCb3SHy3yBy3yLyUYABfkAb0=
+  </data>
+ </layer>
+</map>

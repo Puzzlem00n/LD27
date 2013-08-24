@@ -1,11 +1,12 @@
---loader = require "AdvTiledLoader.Loader"
+loader = require "AdvTiledLoader.Loader"
+loader.path = "maps/"
 --bump = require "lib.bump"
 --anim8 = require "lib.anim8"
---tween = require "lib.tween"
---gamera = require "lib.gamera"
+tween = require "lib.tween"
+gamera = require "lib.gamera"
 --gui = require "Quickie"
 
---require "lib.middleclass"
+require "lib.middleclass"
 --require "lib.Tserial"
 --require "lib.slam"
 
