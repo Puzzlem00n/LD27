@@ -1,6 +1,8 @@
 game = {}
 
 Player = require "player"
+BuzzsawV = require "buzzsawv"
+BuzzsawH = require "buzzsawh"
 
 function game.load()
 	tsize = 40
@@ -11,6 +13,7 @@ function game.load()
 end
 
 function loadMap(lvl)
+	ents = {}
 	map = loader.load("testmap.tmx")
 	mainlyr = map.layers["Main"]
 	map("Ents").visible = false
@@ -20,12 +23,18 @@ function loadMap(lvl)
 			player = Player:new(x,y)
 			camx = player.l
 			camy = player.t
+		elseif tile.properties.buzzsawv then
+			table.insert(ents, BuzzsawV:new(x,y))
+		elseif tile.properties.buzzsawh then
+			table.insert(ents, BuzzsawH:new(x,y))
 		end
 	end
 end
 
 function game.update(dt)
-	
+	for i, ent in pairs(ents) do
+		ent:update(dt)
+	end
 	tween.update(dt)
 	if peekmode then
 		if love.keyboard.isDown("up") then
@@ -51,7 +60,8 @@ function game.update(dt)
 		end
 		cam:setPosition(camx, camy)
 		tensec = tensec - 1*dt
-		if tensec <= 0 then map("Main").visible = false peekmode = false  end
+		if tensec <= 0 then map("Main").visible = false peekmode = false end
+		--player:update(dt)
 	else
 		player:update(dt)
 		cam:setPosition(player.l+20, player.t+20)
@@ -63,6 +73,11 @@ function game.draw()
 		map:setDrawRange(l,t,w,h)
 		map:draw()
 		player:draw()
+		if peekmode then
+			for i, ent in pairs(ents) do
+				ent:draw()
+			end
+		end
 	end)
 	love.graphics.setColor(125,125,125)
 	if peekmode then love.graphics.print(math.ceil(tensec),0,0) end

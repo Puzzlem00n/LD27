@@ -1,7 +1,6 @@
 local Player = class("Player")
 
 function Player:initialize(x, y)
-	self.name = "player"
 	self.tx = x
 	self.ty = y
 	self.l = x*tsize
