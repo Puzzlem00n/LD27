@@ -8,6 +8,8 @@ function Buzzsaw:initialize(x, y)
 	self.w = tsize
 	self.h = tsize
 	self.img = love.graphics.newImage("res/Buzzsaw.png")
+	local g = anim8.newGrid(80,80,160,80)
+	self.anim = anim8.newAnimation(g('1-2',1), 0.15)
 	self.snd = love.audio.newSource("res/turn.ogg")
 	self.spd = .3
 	self.dir = 1
@@ -18,10 +20,11 @@ function Buzzsaw:update(dt)
 		player.dead = true
 		--add chainsaw sfx
 	end
+	self.anim:update(dt)
 end
 
 function Buzzsaw:draw()
-	love.graphics.draw(self.img, self.l, self.t)
+	self.anim:draw(self.img,self.l,self.t,0,.5,.5)
 end
 
 return Buzzsaw

@@ -8,6 +8,11 @@ function Player:initialize(x, y)
 	self.w = tsize
 	self.h = tsize
 	self.img = love.graphics.newImage("res/player.png")
+	self.dwn = love.graphics.newQuad(0,0,40,40,160,40)
+	self.up = love.graphics.newQuad(40,0,40,40,160,40)
+	self.lft = love.graphics.newQuad(80,0,40,40,160,40)
+	self.rgt = love.graphics.newQuad(120,0,40,40,160,40)
+	self.anim = self.dwn
 	self.spd = .3
 	self.rx = x
 	self.ry = y
@@ -19,12 +24,16 @@ function Player:update(dt)
 	if not self.dead then
 		if love.keyboard.isDown("up") then
 			self:move(0,-1)
+			self.anim = self.up
 		elseif love.keyboard.isDown("down") then
 			self:move(0,1)
+			self.anim = self.dwn
 		elseif love.keyboard.isDown("left") then
 			self:move(-1,0)
+			self.anim = self.lft
 		elseif love.keyboard.isDown("right") then
 			self:move(1,0)
+			self.anim = self.rgt
 		end
 		if (self.tx == door.x or self.tx == door.x-1) and self.ty == door.y  then
 			gui.Label{text="WINNER"}
@@ -74,7 +83,7 @@ function Player:move(x,y)
 end
 
 function Player:draw()
-	love.graphics.draw(self.img, self.l, self.t)
+	love.graphics.drawq(self.img, self.anim, self.l, self.t)
 end
 
 return Player
