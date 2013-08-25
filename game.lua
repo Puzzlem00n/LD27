@@ -10,6 +10,7 @@ function game.load()
 	peekmode = true
 	camspd = 200
 	tensec = 10
+	gui.group.default.size[1] = 130
 end
 
 function loadMap(lvl)
@@ -21,12 +22,16 @@ function loadMap(lvl)
 	for x, y, tile in map("Ents"):iterate() do
 		if tile.properties.player then
 			player = Player:new(x,y)
-			camx = player.l
-			camy = player.t
+			camx = player.l+20
+			camy = player.t+20
 		elseif tile.properties.buzzsawv then
 			table.insert(ents, BuzzsawV:new(x,y))
 		elseif tile.properties.buzzsawh then
 			table.insert(ents, BuzzsawH:new(x,y))
+		elseif tile.properties.door then
+			door = {}
+			door.x = x
+			door.y = y
 		end
 	end
 end
@@ -36,6 +41,9 @@ function game.update(dt)
 		ent:update(dt)
 	end
 	tween.update(dt)
+	if love.keyboard.isDown(" ") then
+		tensec = 0
+	end
 	if peekmode then
 		if love.keyboard.isDown("up") then
 			camy = camy - camspd*dt
@@ -60,8 +68,10 @@ function game.update(dt)
 		end
 		cam:setPosition(camx, camy)
 		tensec = tensec - 1*dt
-		if tensec <= 0 then map("Main").visible = false peekmode = false end
-		--player:update(dt)
+		if tensec <= 0 then
+			--map("Main").visible = false
+			peekmode = false
+		end
 	else
 		player:update(dt)
 		cam:setPosition(player.l+20, player.t+20)

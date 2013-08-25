@@ -10,14 +10,13 @@ function Buzzsaw:initialize(x, y)
 	self.img = love.graphics.newImage("res/Buzzsaw.png")
 	self.snd = love.audio.newSource("res/turn.ogg")
 	self.spd = .3
-	self.rx = x
-	self.ry = y
 	self.dir = 1
 end
 
 function Buzzsaw:update(dt)
 	if self.tx == player.tx and self.ty == player.ty then
 		player.dead = true
+		--add chainsaw sfx
 	end
 end
 

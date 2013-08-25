@@ -30,7 +30,7 @@ function love.draw()
 	love.graphics.rectangle("fill", 0, 0, love.graphics:getWidth(), love.graphics:getHeight())
 	love.graphics.setColor(255,255,255,255)
 	--arc.clear_key()
-	--gui.core.draw()
+	gui.core.draw()
 end
 
 function changestate(state)
@@ -55,7 +55,7 @@ function love.keypressed(key, code)
 		gamestate.keypressed(key)
 	end
 	--arc.set_key(key)
-	--gui.keyboard.pressed(key, code)
+	gui.keyboard.pressed(key, code)
 end
 
 function love.keyreleased(key)

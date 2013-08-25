@@ -4,7 +4,7 @@ loader.path = "maps/"
 --anim8 = require "lib.anim8"
 tween = require "lib.tween"
 gamera = require "lib.gamera"
---gui = require "Quickie"
+gui = require "Quickie"
 
 require "lib.middleclass"
 --require "lib.Tserial"

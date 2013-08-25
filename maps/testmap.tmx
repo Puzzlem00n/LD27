@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="40" tileheight="40">
  <tileset firstgid="1" name="Test" tilewidth="40" tileheight="40">
-  <image source="Tileset.png" width="200" height="80"/>
+  <image source="Tileset.png" width="200" height="120"/>
   <tile id="1">
    <properties>
     <property name="block" value="1"/>
@@ -17,6 +17,11 @@
     <property name="rail" value="1"/>
    </properties>
   </tile>
+  <tile id="4">
+   <properties>
+    <property name="rail" value="1"/>
+   </properties>
+  </tile>
   <tile id="5">
    <properties>
     <property name="buzzsawv" value="1"/>
@@ -27,25 +32,35 @@
     <property name="buzzsawh" value="1"/>
    </properties>
   </tile>
+  <tile id="8">
+   <properties>
+    <property name="door" value="1"/>
+   </properties>
+  </tile>
   <tile id="9">
    <properties>
     <property name="player" value="1"/>
    </properties>
   </tile>
+  <tile id="12">
+   <properties>
+    <property name="crumble" value="1"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="BG" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjZWBgYB3Fo3gUj+IhgAHMywXd
+   eJzjZ2Bg4B/Fo3gUj+IhgAFdHxGV
   </data>
  </layer>
  <layer name="Main" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYKIDZiSAqWkWKWYiq2fBgYk1k1h3EeNOdHdRaiY55jFD8Ugxj5Q4odQscs2kd/6gRf6lBAMAfQwB3g==
+   eJxjYmBgYKIDZiSAqWkWKWYiq+fFgYk1k1h3EeNOZHkWKphJjnnMUIzNPFYkzAKlKTGP2u6jdvhRO37JNZOc/MFHgVm0yL+UYABxAwIx
   </data>
  </layer>
  <layer name="Ents" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF6IB9oB0wxAAbGp9rQFwxCkYCAABEFAAY
+   eJxjYBgFo4A8wA6l2dDEuejtkFGAF3AOtAOoCABDKAAh
   </data>
  </layer>
 </map>
