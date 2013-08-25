@@ -26,7 +26,7 @@ function Player:update(dt)
 		elseif love.keyboard.isDown("right") then
 			self:move(1,0)
 		end
-		if self.tx == door.x and self.ty == door.y then
+		if (self.tx == door.x or self.tx == door.x-1) and self.ty == door.y  then
 			gui.Label{text="WINNER"}
 		end
 	else
@@ -51,7 +51,7 @@ end
 function Player:move(x,y)
 	local tile = mainlyr(self.tx+x, self.ty+y)
 	local lasttile = mainlyr(self.tx, self.ty)
-	if not tile.properties.block and self.l == self.tx*tsize and self.t == self.ty*tsize then
+	if tile and not tile.properties.block and self.l == self.tx*tsize and self.t == self.ty*tsize then
 		if lasttile.properties.crumble then
 			table.insert(self.crum, {x=self.tx, y=self.ty})
 			--add crumble sfx
