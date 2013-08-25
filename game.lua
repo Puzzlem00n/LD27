@@ -69,7 +69,7 @@ function game.update(dt)
 		cam:setPosition(camx, camy)
 		tensec = tensec - 1*dt
 		if tensec <= 0 then
-			--map("Main").visible = false
+			map("Main").visible = false
 			peekmode = false
 		end
 	else
