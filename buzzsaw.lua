@@ -7,7 +7,7 @@ function Buzzsaw:initialize(x, y)
 	self.t = y*tsize
 	self.w = tsize
 	self.h = tsize
-	self.img = love.graphics.newImage("res/Buzzsaw.png")
+	self.img = love.graphics.newImage("res/buzzsaw.png")
 	local g = anim8.newGrid(80,80,160,80)
 	self.anim = anim8.newAnimation(g('1-2',1), 0.15)
 	self.snd = love.audio.newSource("res/turn.ogg")

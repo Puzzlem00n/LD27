@@ -35,7 +35,7 @@ function Player:update(dt)
 			self:move(1,0)
 			self.anim = self.rgt
 		end
-		if (self.tx == door.x or self.tx == door.x-1) and self.ty == door.y  then
+		if self.tx == door.x and self.ty == door.y  then
 			changestate(win)
 		end
 	else
