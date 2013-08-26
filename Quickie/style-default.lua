@@ -43,12 +43,11 @@ end
 gradient:set(200,255)
 
 local function box(x,y,w,h, bg, border, flip)
-	love.graphics.setLine(1, 'rough')
+	love.graphics.setLine(2, 'rough')
 
-	love.graphics.setColor(bg)
-	local sy = flip and -h/2 or h/2
-	love.graphics.draw(gradient.img, x,y+h/2, 0,w,sy, 0,1)
-	love.graphics.setColor(border)
+	love.graphics.setColor(127,115,108)
+	love.graphics.rectangle('fill', x,y,w,h)
+	love.graphics.setColor(114,103,97)
 	love.graphics.rectangle('line', x,y,w,h)
 end
 

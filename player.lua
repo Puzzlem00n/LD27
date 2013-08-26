@@ -36,24 +36,23 @@ function Player:update(dt)
 			self.anim = self.rgt
 		end
 		if (self.tx == door.x or self.tx == door.x-1) and self.ty == door.y  then
-			gui.Label{text="WINNER"}
+			changestate(win)
 		end
 	else
-		if self.l == self.tx*tsize and self.t == self.ty*tsize then
-			gui.group.push{pos={180,275}, grow="right"}
-			if gui.Button{text="Peek Again"} then
-				self:initialize(self.rx, self.ry)
-				tensec = 10
-				peekmode = true
-				map("Main").visible = true
-				camx = player.l+20
-				camy = player.t+20
-			end
-			if gui.Button{text="Again, no Peeking"} then
-				self:initialize(self.rx, self.ry)
-			end
-			gui.group.pop{}
+		gui.group.push{pos={50,275}, grow="right"}
+		if gui.Button{text="Peek Again"} then
+			self:initialize(self.rx, self.ry)
+			tensec = 10
+			peekmode = true
+			map("BG").visible = false
+			camx = player.l+20
+			camy = player.t+20
+			peekcount = peekcount + 1
 		end
+		if gui.Button{text="Again, no Peeking"} then
+			self:initialize(self.rx, self.ry)
+		end
+		gui.group.pop{}
 	end
 end
 
@@ -63,7 +62,6 @@ function Player:move(x,y)
 	if tile and not tile.properties.block and self.l == self.tx*tsize and self.t == self.ty*tsize then
 		if lasttile.properties.crumble then
 			table.insert(self.crum, {x=self.tx, y=self.ty})
-			--add crumble sfx
 		end
 		self.tx = self.tx + x
 		self.ty = self.ty + y
@@ -71,19 +69,19 @@ function Player:move(x,y)
 		tween(self.spd, self, {t = self.ty*tsize})
 		if tile.properties.kill then
 			self.dead = true
-			--add mine sfx
+			love.audio.play(mine)
 		end
 		for i, crumbs in pairs(self.crum) do
 			if crumbs.x == self.tx and crumbs.y == self.ty then
 				self.dead = true
-				--add fall sfx
+				love.audio.play(ahh)
 			end
 		end
 	end
 end
 
 function Player:draw()
-	love.graphics.drawq(self.img, self.anim, self.l, self.t)
+	if not self.dead then love.graphics.drawq(self.img, self.anim, self.l, self.t) end
 end
 
 return Player

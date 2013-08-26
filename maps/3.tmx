@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="15" height="30" tilewidth="40" tileheight="40">
+ <tileset firstgid="1" source="PtTotD.tsx"/>
+ <layer name="Main" width="15" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYKIASwIxOwlYEk0vDxqWAmJpLOI8ROjFh6mpl5kAppVeavmXkBtopXeohPNQ1DuaNkbDmR7hjM8d1NQrSAJG1ksuBgCJCA/q
+  </data>
+ </layer>
+ <layer name="Ents" width="15" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhcgBOKR8EoGAWjYBQML8A10A7AAQCBRAAd
+  </data>
+ </layer>
+ <layer name="BG" width="15" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBgYBzFo3gUj+JRPIpHKAYAOO4Bww==
+  </data>
+ </layer>
+</map>

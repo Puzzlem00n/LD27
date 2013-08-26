@@ -18,7 +18,9 @@ end
 function Buzzsaw:update(dt)
 	if self.tx == player.tx and self.ty == player.ty then
 		player.dead = true
-		--add chainsaw sfx
+		love.audio.play(saw)
+		player.tx = 0
+		player.ty = 0
 	end
 	self.anim:update(dt)
 end

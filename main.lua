@@ -1,12 +1,18 @@
 require "requirer"
 require "menu"
 require "game"
+require "win"
+require "instruct"
 
 function love.load()
 	changestate(menu)
 	paused = false
 	pausedopac = 0
 	maxframe = 0.1
+	love.graphics.setNewFont("res/emulogic.ttf", 15)
+	music = love.audio.newSource("res/XPtTotD.ogg", "stream")
+	music:setLooping(true)
+	love.audio.play(music)
 end
 
 function love.update(dt)
@@ -16,9 +22,6 @@ function love.update(dt)
 			local nowdt = math.min(maxframe, gdt)
 			gamestate.update(nowdt)
 			gdt = gdt - maxframe
-		end
-		if love.keyboard.isDown("escape") then
-			love.event.quit()
 		end
 	end
 	--arc.check_keys(dt)
@@ -33,9 +36,10 @@ function love.draw()
 	gui.core.draw()
 end
 
-function changestate(state)
+function changestate(state, num)
 	gamestate = state
-	gamestate.load()
+	if num then gamestate.load(num)
+	else gamestate.load() end
 end
 
 function love.mousepressed(x, y, button)
