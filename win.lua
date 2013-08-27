@@ -1,7 +1,7 @@
 win = {}
 
 function win.load()
-	win = love.graphics.newImage("res/tailedit.png")
+	winimg = love.graphics.newImage("res/tailedit.png")
 end
 
 function win.update(dt)
@@ -12,6 +12,6 @@ function win.keypressed(key)
 end
 
 function win.draw()
-	love.graphics.draw(win)
+	love.graphics.draw(winimg)
 	love.graphics.print("Peeks: "..peekcount, 450,0)
 end
